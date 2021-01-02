@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import argparse, os
+import argparse, os, sys
 
 def handle(f):
 	def wrapper(*arg,**kwargs):
@@ -54,6 +54,9 @@ if __name__=="__main__":
 	parser.add_argument('-old','--old-string',metavar='' ,help="The old string that you want to replace",default='com.termux/files')
 	parser.add_argument('-new','--new-string',metavar='' ,help="The new string that will be replaced",default='ru.iiec.pydroid/usr')
 	parser.add_argument('-e',help='Ignore errors',action='store_true')
+	if len(sys.argv)==1:
+		parser.print_help(sys.stderr)
+		sys.exit(1)
 	args = parser.parse_args()
 	input=os.path.join(os.getcwd(),args.input)
 	if os.path.isdir(input):
