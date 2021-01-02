@@ -17,7 +17,7 @@ def handle(f):
 @handle
 def convert (input,output=None,old=None,new=None):
 	with open (input,'rb') as file:
-		content = file.read().replace(args.old_string,args.new_string)
+		content = file.read().replace(args.old_string.encode(),args.new_string.encode())
 	if output == None:
 		output=input
 	with open (output,'wb') as file:
@@ -50,8 +50,8 @@ if __name__=="__main__":
 	description="This program was initially made to chages termux binaries to work on pydroid or other terminals")
 	parser.add_argument('-i','--input',metavar='',help="The input file or folder",required=True)
 	parser.add_argument('-o','--output',metavar='',help="The output file or folder",default=None)
-	parser.add_argument('-old','--old-string',metavar='' ,help="The old string that you want to replace",default=b'com.termux/files')
-	parser.add_argument('-new','--new-string',metavar='' ,help="The new string that will be replaced",default=b'ru.iiec.pydroid/usr')
+	parser.add_argument('-old','--old-string',metavar='' ,help="The old string that you want to replace",default='com.termux/files')
+	parser.add_argument('-new','--new-string',metavar='' ,help="The new string that will be replaced",default='ru.iiec.pydroid/usr')
 	parser.add_argument('-e',help='Ignore errors',action='store_true')
 	args = parser.parse_args()
 	input=os.path.join(os.getcwd(),args.input)
