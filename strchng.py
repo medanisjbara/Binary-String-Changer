@@ -48,7 +48,7 @@ def dir_to_dir (input,output):
 if __name__=="__main__":
 	parser = argparse.ArgumentParser(
 	description="""This program was initially made to chages termux binaries to work on pydroid or other terminals
-	example: strchng -i hello -o goodbye -old "Hello World" -new "Goodbye Everyone"""")
+	example: strchng -i a.out -o output -old "Hello World" -new "Goodbye Everyone" """)
 	parser.add_argument('-i','--input',metavar='',help="The input file or folder",required=True)
 	parser.add_argument('-o','--output',metavar='',help="The output file or folder",default=None)
 	parser.add_argument('-old','--old-string',metavar='' ,help="The old string that you want to replace",default='com.termux/files')
