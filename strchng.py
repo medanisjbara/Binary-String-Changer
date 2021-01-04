@@ -9,7 +9,6 @@ def handle(f):
 			except:
 				print ('File skipped')
 				print ('proceeding ...')
-				print ()
 		else:
 			f(*arg,**kwargs)
 	return wrapper
