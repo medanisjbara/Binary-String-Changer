@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-import argparse, os, sys
+import argparse, os, sys  #importing
 
+############################# defining functions ###############################
+#decorator fuction that deals with errors 
 def handle(f):
 	def wrapper(*arg,**kwargs):
 		if args.e:
@@ -13,6 +15,7 @@ def handle(f):
 			f(*arg,**kwargs)
 	return wrapper
 
+#the actual converter function that replaces the old string with a new one and stores it in the output file
 @handle
 def convert (input,output=None,old=None,new=None):
 	with open (input,'rb') as file:
@@ -23,6 +26,7 @@ def convert (input,output=None,old=None,new=None):
 		file.write(content)
 	return True
 
+#looping through every file in the nested folder using os.walk()
 def override (input):
 	for r, d, f in os.walk(input):
 		for file in f:
@@ -30,6 +34,7 @@ def override (input):
 		for folder in d:
 			override (os.path.join(r,folder))
 
+#dealing with the input and output file locations for each file in case of a seperate folder output choice
 def dir_to_dir (input,output):
 	if not os.path.exists(output):
 		os.mkdir(output)
@@ -44,6 +49,7 @@ def dir_to_dir (input,output):
 			convert (temp_input,temp_output)
 
 
+########################## the actual program ##########################
 if __name__=="__main__":
 	parser = argparse.ArgumentParser(
 	description="""This program was initially made to chages termux binaries to work on pydroid or other terminals
@@ -52,7 +58,7 @@ if __name__=="__main__":
 	parser.add_argument('-o','--output',metavar='',help="The output file or folder",default=None)
 	parser.add_argument('-old','--old-string',metavar='' ,help="The old string that you want to replace",default='com.termux/files')
 	parser.add_argument('-new','--new-string',metavar='' ,help="The new string that will be replaced",default='ru.iiec.pydroid/usr')
-	parser.add_argument('-e',help='Ignore errors',action='store_true')
+	parser.add_argument('-e',help='Ignore errors flag',action='store_true')
 	if len(sys.argv)==1:
 		parser.print_help(sys.stderr)
 		sys.exit(1)
