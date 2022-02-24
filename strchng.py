@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 import argparse, os, sys  #importing
 
+# Todo:
+# * Add parralel jobs to make the script faster.
+# * Find more efficient ways to handle errors without checking in each iteration.
+#
+
 ############################# defining functions ###############################
 #decorator fuction that deals with errors 
 def handle(f):
