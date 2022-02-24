@@ -7,3 +7,14 @@ you might find this practical in some cases, you might not .. but life is ultima
 2) if you dealt with binaries before, you know you can't change a string within it with another string unless they're both the same size. However if you have a smaller string you can use a null bite. I'll add a flag to eable that option soon
 3) you can't change a string within a binary file with a longer one (not without corrupting your file)
 4) (for amateurs and dummy tunisians like myself) you can add strchng to your PATH (chang the name if you want) and use it as an installed linux command.
+
+# Installation
+If you insist on installing this. follow these 2 steps
+```
+git clone https://github.com/medanisjbara/Binary-String-Changer
+install Binary-String-Changer/strchng.py $HOME/.local/bin/strchng
+```
+
+# Usage
+If you've installed it you can just use `strchng --help` directly.
+If not, use `python strchng.py --help` withing the Binary-String-Changer folder to get help on how to use it.
